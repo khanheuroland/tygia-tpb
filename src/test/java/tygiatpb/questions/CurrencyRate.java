@@ -14,4 +14,9 @@ public class CurrencyRate {
     {
         return new CurrencyRateFromAPI();
     }
+
+    public static Question<String> itemAt(int index)
+    {
+        return new CurrencyRateItem(index);
+    }
 }

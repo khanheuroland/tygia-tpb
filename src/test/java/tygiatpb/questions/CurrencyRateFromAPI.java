@@ -13,7 +13,7 @@ import static net.serenitybdd.rest.RestRequests.given;
 public class CurrencyRateFromAPI implements Question<List<CurrencyRate>> {
     @Override
     public List<CurrencyRate> answeredBy(Actor actor) {
-        String api = "https://tpb.vn/CMCWPCoreAPI/api/public-service/get-currency-rate?filename=20200610";
+        String api = "https://tpb.vn/CMCWPCoreAPI/api/public-service/get-currency-rate?filename=20200611";
         given().with().header("Authorization", "Basic d3BzdHBiMjAxODpXUFN0cGIyMDE4MTIxMg==")
                 .when().get(api);
 

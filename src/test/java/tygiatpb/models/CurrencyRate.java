@@ -8,13 +8,13 @@ public class CurrencyRate {
     public String kieu;
     @Override
     public String toString() {
-        return "{"
-                +"ten:"+ this.ten +","
-                +"ban:"+ this.ban +","
-                +"mua:"+ this.mua +","
-                +"chuyen:"+this.chuyen +","
-                +"kieu:"+ this.kieu
-                +"}";
+        return "["
+                + this.kieu +"|"
+                + this.ten +"|"
+                + this.mua +"|"
+                + this.chuyen +"|"
+                + this.ban
+                +"]";
     }
 
     public CurrencyRate(String code, String name, String buy, String sell, String exchange)

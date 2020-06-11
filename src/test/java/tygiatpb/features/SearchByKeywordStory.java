@@ -21,6 +21,7 @@ import tygiatpb.tasks.Search;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 import static net.serenitybdd.rest.RestRequests.given;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
@@ -51,8 +52,18 @@ public class SearchByKeywordStory {
                 Search.forTheDay(LocalDateTime.now().toLocalDate())
         );
 
+        List<tygiatpb.models.CurrencyRate> apiList = CurrencyRate.fromAPI().answeredBy(anna);
+
         then(anna).should(
-                seeThat(CurrencyRate.displayOnWebPage(), hasSize(CurrencyRate.fromAPI().answeredBy(anna).size()))
+                seeThat("The displayed on webpage",
+                        CurrencyRate.displayOnWebPage(), hasSize(apiList.size()))
         );
+
+        for(int i=0; i<apiList.size(); i++)
+        {
+            then(anna).should(
+                    seeThat("The data display on row #"+ i, CurrencyRate.itemAt(i), equalTo(apiList.get(i).toString()))
+            );
+        }
     }
 }
